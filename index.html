@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>LungCheck By DOC AI</title>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  <script defer src="app.js"></script>
+  <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+  
+
+  <style>
+    /* Added some basic styling for feedback */
+    #upload-feedback {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+    #upload-feedback.success {
+      color: green;
+    }
+    #upload-feedback.error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="wrapper">
+    <header>
+      <img src="logo.png" alt="LungCheck Logo" class="logo">
+      <h1>LungCheck <span>By DOC AI</span></h1>
+    </header>
+   
+    <div class="content">
+      <h2>Lung Cancer Detection</h2>
+      <input type="file" id="upload" accept="image/*" class="upload-btn">
+      <canvas id="canvas" width="224" height="224" style="display: none;"></canvas>
+      
+      <p id="upload-feedback"></p> <!-- Feedback for upload status -->
+      <div id="image-preview-container" style="display: none;">
+        <h3>Image Preview:</h3>
+        <img id="image-preview" src="" alt="Image Preview" style="max-width: 100%; height: auto;">
+      </div>
+      <p id="result" class="result-text">Upload your CT Scan</p>
+    </div>
+
+    <footer>
+      <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> This tool offers a preliminary diagnosis and does not replace professional medical advice.</p>
+      </div>
+      
+      <p>Made with ❤️ by DOC AI</p>
+      <p>&copy; 2025 DOC AI. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("upload").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      const feedback = document.getElementById("upload-feedback");
+      const previewContainer = document.getElementById("image-preview-container");
+      const previewImg = document.getElementById("image-preview");
+
+      if (file) {
+        // Show loading feedback
+        feedback.textContent = "Please wait while your CT scan is being diagnosed...";
+        feedback.classList.remove("success", "error");
+        
+        // Show image preview
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          previewImg.src = e.target.result;
+          previewContainer.style.display = "block";
+        };
+        reader.onerror = function() {
+          feedback.textContent = "Error loading the image.";
+          feedback.classList.add("error");
+        };
+
+        reader.readAsDataURL(file);
+
+        // Simulate image processing
+        setTimeout(function() {
+          feedback.textContent = "CT Sca, uploaded and ready for Diagnosis!";
+          feedback.classList.add("success");
+        }, 2000); // Simulate a delay
+      } else {
+        feedback.textContent = "No file selected.";
+        feedback.classList.add("error");
+      }
+    });
+  </script>
+  <div id="welcome-modal" class="modal">
+    <div class="modal-content">
+      <!-- Logo at the top of the modal -->
+      <img src="logo.png" alt="LungCheck Logo" style="max-width: 50px; display: block; margin: 0 auto;">
+      
+      <span class="close-btn" id="close-modal">&times;</span>
+      <h2>Welcome to LungCheck</h2>
+      <p>Upload your CT scan, and we'll provide an AI-powered preliminary analysis of your lung condition.</p>
+      <p><em>This tool developed by DOC AI uses advanced artificial intelligence to support early detection of lung cancer types based on CT scan images.</em></p>
+    </div>
+  </div>
+  
+  <script>
+    window.onload = function() {
+      const modal = document.getElementById("welcome-modal");
+      const closeBtn = document.getElementById("close-modal");
+  
+      closeBtn.onclick = () => {
+        modal.style.display = "none";
+      };
+  
+      window.onclick = (event) => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+    };
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,264 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Base styles */
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Wrapper */
+  .wrapper {
+    max-width: 600px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .wrapper:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Header */
+  header {
+    background: #2c3e50;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  
+  h1 span {
+    font-weight: 300;
+    font-size: 1.2rem;
+    opacity: 0.8;
+  }
+  
+  /* Content */
+  .content {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+  }
+  
+  /* Upload button */
+  .upload-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background: #3498db;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin: 1rem 0;
+  }
+  
+  .upload-btn:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+  }
+  
+  .upload-btn::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  
+  .upload-btn::before {
+    content: 'Choose Image';
+  }
+  
+  /* Result text */
+  .result-text {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: #555;
+    min-height: 2em;
+  }
+  
+  /* Footer */
+  footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .wrapper {
+      width: 95%;
+      margin: 10px;
+    }
+  
+    header {
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+  
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    h1 span {
+      font-size: 1rem;
+    }
+  
+    h2 {
+      font-size: 1.3rem;
+    }
+  
+    .content {
+      padding: 1.5rem;
+    }
+  
+    .upload-btn {
+      width: 100%;
+      padding: 0.7rem;
+    }
+  }
+  
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    body {
+      background: #fff;
+    }
+  
+    .wrapper {
+      background: #fff;
+      border: 2px solid #000;
+    }
+  
+    .result-text {
+      color: #000;
+      font-weight: 700;
+    }
+  }
+  
+  /* Animation for result */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .result-text {
+    animation: fadeIn 0.5s ease-in;
+  }
+  .disclaimer {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 15px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 800px;
+    font-size: 0.95em;
+  }
+  .modal {
+    display: block; /* Show by default, hide with JS later */
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+    font-family: sans-serif;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    color: #000;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  .result-text {
+    font-size: 1.4em;
+    margin-top: 20px;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .result-text.green {
+    color: #28a745; /* Bootstrap green */
+  }
+  
+  .result-text.red {
+    color: #dc3545; /* Bootstrap red */
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeInEffect 1s forwards;
+  }
+  
+  @keyframes fadeInEffect {
+    to {
+      opacity: 1;
+    }
+  }
+      
