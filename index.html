@@ -61,7 +61,7 @@
         <h3>Image Preview:</h3>
         <img id="image-preview" src="" alt="Image Preview" style="max-width: 100%; height: auto;">
       </div>
-      <p id="result" class="result-text"><span class="spinner" id="spinner" ></span>It may take a moment...</p>
+      <p id="result" class="result-text">It may take a moment...</p>
     </div>
 
     <footer>
@@ -138,16 +138,7 @@
         }
       };
     };
-  const photoInput = document.getElementById('upload');
-  const spinner = document.getElementById('spinner');
-
-  photoInput.addEventListener('change', function () {
-    if (photoInput.files && photoInput.files.length > 0) {
-      spinner.style.display = 'inline-block'; // or 'block', depending on layout
-    } else {
-      spinner.style.display = 'none';
-    }
-  });
+  
   </script>
   
 </body>
