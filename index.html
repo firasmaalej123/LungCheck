@@ -42,7 +42,7 @@
         <h3>Image Preview:</h3>
         <img id="image-preview" src="" alt="Image Preview" style="max-width: 100%; height: auto;">
       </div>
-      <p id="result" class="result-text">Upload your CT Scan</p>
+      <p id="result" class="result-text">It may take a moment...</p>
     </div>
 
     <footer>
@@ -82,7 +82,7 @@
 
         // Simulate image processing
         setTimeout(function() {
-          feedback.textContent = "CT Sca, uploaded and ready for Diagnosis!";
+          feedback.textContent = "CT Scan uploaded and ready for Diagnosis!";
           feedback.classList.add("success");
         }, 2000); // Simulate a delay
       } else {
