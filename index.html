@@ -11,6 +11,25 @@
   
 
   <style>
+      .agree-btn {
+    background-color: #007bff; /* Bootstrap blue */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.1s ease, background-color 0.3s ease;
+  }
+  
+  .agree-btn:hover {
+    background-color: #0056b3; /* darker blue on hover */
+  }
+  
+  .agree-btn:active {
+    transform: scale(0.97); /* slight shrink effect on click */
+  }
+      
     /* Added some basic styling for feedback */
     #upload-feedback {
       margin-top: 10px;
@@ -96,19 +115,20 @@
       <!-- Logo at the top of the modal -->
       <img src="logo.png" alt="LungCheck Logo" style="max-width: 50px; display: block; margin: 0 auto;">
       
-      <span class="close-btn" id="close-modal">&times;</span>
       <h2>Welcome to LungCheck</h2>
       <p>Upload your CT scan, and we'll provide an AI-powered preliminary analysis of your lung condition.</p>
       <p><em>This tool developed by DOC AI uses advanced artificial intelligence to support early detection of lung cancer types based on CT scan images.</em></p>
+  
+      <!-- Replacing the X with a button -->
+      <button id="agree-button" class="agree-btn">I Agree</button>
     </div>
   </div>
-  
   <script>
     window.onload = function() {
       const modal = document.getElementById("welcome-modal");
-      const closeBtn = document.getElementById("close-modal");
+      const agreeButton = document.getElementById("agree-button");
   
-      closeBtn.onclick = () => {
+      agreeButton.onclick = () => {
         modal.style.display = "none";
       };
   
